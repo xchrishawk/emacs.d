@@ -15,3 +15,6 @@
       kept-old-versions 2
       version-control t)
 
+;; Add and load zenburn theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/zenburn-emacs")
+(load-theme 'zenburn t)
