@@ -15,3 +15,6 @@
 
 ;; Set frame transparency
 (add-to-list 'default-frame-alist '(alpha . (95 . 70)))
+
+;; Default initial frame to maximized
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
