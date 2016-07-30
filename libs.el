@@ -4,3 +4,6 @@
 ;; Enable IDO mode
 (require 'ido)
 (ido-mode t)
+
+;; Enable windmove
+(windmove-default-keybindings)
