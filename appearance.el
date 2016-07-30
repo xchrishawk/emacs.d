@@ -16,6 +16,9 @@
 ;; Set frame transparency
 (add-to-list 'default-frame-alist '(alpha . (95 . 70)))
 
+;; Set font size to 12
+(set-face-attribute 'default nil :height 120)
+
 ;; Default initial frame to maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
