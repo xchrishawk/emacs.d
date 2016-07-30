@@ -1,6 +1,9 @@
 ;; emacs init file
 ;; Chris Vig (chris@invictus.so)
 
+;; Don't display splash screen at startup
+(setq inhibit-startup-screen t)
+
 ;; Disable menu bar, scroll bar, and tool bar
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
