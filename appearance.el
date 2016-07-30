@@ -12,3 +12,6 @@
 ;; Add and load zenburn theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs")
 (load-theme 'zenburn t)
+
+;; Set frame transparency
+(add-to-list 'default-frame-alist '(alpha . (95 . 70)))
