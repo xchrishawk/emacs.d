@@ -18,3 +18,6 @@
 
 ;; Default initial frame to maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; Enable column numbers by default
+(setq column-number-mode t)
