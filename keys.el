@@ -1,6 +1,9 @@
 ;; keys.el
 ;; Chris Vig (chris@invictus.so)
 
+;; Opens the buffer list in the current window, instead of the other window.
+(global-set-key "\C-x\C-b" 'buffer-menu)
+
 ; Function to insert lambda character
 (defun insert-lambda ()
   "Insert a lambda character (λ) at point."
