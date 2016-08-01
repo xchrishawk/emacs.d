@@ -40,6 +40,18 @@
 	(switch-to-buffer terminal-buffer-name)
       (ansi-term bash-path terminal-name))))
 
+;; ---- File Management ----
+
+(defun rename-current-buffer-file (new-file-name)
+  "Renames the file associated with the current buffer."
+  (interactive
+   (if (not (buffer-file-name (current-buffer)))
+       (error "%s is not a file buffer" (buffer-name (current-buffer)))
+     (list (read-file-name "Rename to: "))))
+  (let ((original-file-name (buffer-file-name (current-buffer))))
+    (write-file new-file-name t)
+    (delete-file original-file-name)))
+
 ;; ---- Window Management ----
 
 (defun prev-window (count)
