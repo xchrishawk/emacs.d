@@ -1,6 +1,8 @@
 # .gitignore - .emacs.d
 # Chris Vig (chris@invictus.so)
 
+#*
+.#*
 auto-save-list/
 bookmarks
 elpa/
