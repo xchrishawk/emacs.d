@@ -58,6 +58,10 @@
 ;; Opens the buffer list in the current window, instead of the other window.
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
 
+;; Use C-. and C-, to cycle through windows.
+(global-set-key (kbd "C-.") 'other-window)
+(global-set-key (kbd "C-,") 'prev-window)
+
 ;; ---- Hooks ----
 
 ;; Delete trailing whitespace before saving

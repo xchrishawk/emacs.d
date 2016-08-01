@@ -40,6 +40,13 @@
 	(switch-to-buffer terminal-buffer-name)
       (ansi-term bash-path terminal-name))))
 
+;; ---- Window Management ----
+
+(defun prev-window (count)
+  "Opposite of other-window."
+  (interactive "p")
+  (other-window (- count)))
+
 ;; ---- Misc ----
 
 (defun insert-lambda-char ()
