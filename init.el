@@ -4,8 +4,7 @@
 ;; ---- Includes ----
 
 ;; Load other configuration files
-(load-file "~/.emacs.d/keys.el")
-(load-file "~/.emacs.d/layout.el")
+(load-file "~/.emacs.d/functions.el")
 
 ;; ---- Appearance ----
 
@@ -57,9 +56,22 @@
 ;; ---- Key Customization ----
 
 ;; Opens the buffer list in the current window, instead of the other window.
-(global-set-key "\C-x\C-b" 'buffer-menu)
+(global-set-key (kbd "C-x C-b") 'buffer-menu)
 
 ;; ---- Hooks ----
 
 ;; Delete trailing whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; ---- Racket Mode ----
+
+(defun custom-racket-mode ()
+  "Modify keymap used by racket-mode."
+  (local-set-key (kbd "C-c l") 'insert-lambda-char))
+
+(add-hook 'racket-mode-hook 'custom-racket-mode)
+
+;; ---- Set Initial Layout ----
+
+;; Finally, initialize the current frame
+(initialize)
