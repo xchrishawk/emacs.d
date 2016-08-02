@@ -20,7 +20,7 @@
 (toggle-scroll-bar -1)
 
 ;; Set default font size to 12
-(set-face-attribute 'default nil :height 120)
+(set-font-size 12)
 
 ;; Set frame to slightly transparent, and default to maximized
 (add-to-list 'default-frame-alist '(alpha . (95 . 70)))

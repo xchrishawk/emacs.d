@@ -20,6 +20,13 @@
     (mapc 'kill-buffer (buffer-list))
     (initialize)))
 
+;; ---- Appearance ----
+
+(defun set-font-size (size)
+  "Sets the default font size."
+  (interactive "nFont size: ")
+  (set-face-attribute 'default nil :height (* size 10)))
+
 ;; ---- Buffer Management ----
 
 (defun buffer-exists (name)
