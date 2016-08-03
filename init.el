@@ -6,6 +6,26 @@
 ;; Load other configuration files
 (load-file "~/.emacs.d/functions.el")
 
+;; ---- MELPA ----
+
+;; Enable the MELPA package archive
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
+;; ---- Key Customization ----
+
+;; Opens the buffer list in the current window, instead of the other window.
+(global-set-key (kbd "C-x C-b") 'buffer-menu)
+
+;; Use C-. and C-, to cycle through windows.
+(global-set-key (kbd "C-.") 'other-window)
+(global-set-key (kbd "C-,") 'prev-window)
+
+;; ---- Hooks ----
+
+;; Delete trailing whitespace before saving
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; ---- Appearance ----
 
 ;; Don't show the startup screen
@@ -47,26 +67,6 @@
 (require 'ido)
 (ido-mode t)
 
-;; ---- MELPA ----
-
-;; Enable the MELPA package archive
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-
-;; ---- Key Customization ----
-
-;; Opens the buffer list in the current window, instead of the other window.
-(global-set-key (kbd "C-x C-b") 'buffer-menu)
-
-;; Use C-. and C-, to cycle through windows.
-(global-set-key (kbd "C-.") 'other-window)
-(global-set-key (kbd "C-,") 'prev-window)
-
-;; ---- Hooks ----
-
-;; Delete trailing whitespace before saving
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
 ;; ---- Racket Mode ----
 
 (defun custom-racket-mode ()
@@ -74,6 +74,11 @@
   (local-set-key (kbd "C-c l") 'insert-lambda-char))
 
 (add-hook 'racket-mode-hook 'custom-racket-mode)
+
+;; ---- Org Mode ----
+
+;; Fontify source code blocks in org files by default
+(setq org-src-fontify-natively t)
 
 ;; ---- Set Initial Layout ----
 
