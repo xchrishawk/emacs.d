@@ -37,6 +37,12 @@
   "Builds a non-file name for a buffer (e.g., \"*buffer*\" for \"buffer\")."
   (concat (string ?*) name (string ?*)))
 
+(defun scratch ()
+  "Opens a \"*scratch*\" buffer, or switches to it if it already exists."
+  (interactive)
+  (switch-to-buffer (get-buffer-create "*scratch*"))
+  (lisp-interaction-mode))
+
 (defun terminal ()
   "Opens an ansi-term buffer named \"terminal\", or selects it if it alredy exists."
   (interactive)
