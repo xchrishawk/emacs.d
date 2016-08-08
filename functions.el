@@ -78,3 +78,11 @@
   "Inserts a lambda character (λ) at point."
   (interactive)
   (insert "λ"))
+
+(defun fill-to-column (column char)
+  "Fills the current line with CHAR up to column COLUMN. Sets mark at current point."
+  (interactive "NFill to column: \ncCharacter:")
+  (let* ((current-column (- (point) (line-beginning-position)))
+	 (chars-required (- column current-column)))
+    (push-mark)
+    (insert-char char chars-required)))
