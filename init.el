@@ -50,6 +50,11 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs")
 (load-theme 'zenburn t)
 
+;; ---- Formatting ----
+
+;; Default auto-fill-mode fill-column to 80 instead of 72
+(setq-default fill-column 80)
+
 ;; ---- Backup Files ----
 
 ;; Set backup file configuration as suggested at...
