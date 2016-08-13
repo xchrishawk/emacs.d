@@ -6,6 +6,9 @@
 ;; Load other configuration files
 (load-file "~/.emacs.d/functions.el")
 
+;; Load modules
+(load-file "~/.emacs.d/modules/ascii-table/ascii-table.el")
+
 ;; ---- MELPA ----
 
 ;; Enable the MELPA package archive
