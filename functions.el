@@ -56,12 +56,20 @@
 ;; ---- File Management ----
 
 (defun rename-current-buffer-file (new-file-name)
-  "Renames the file associated with the current buffer."
+  "Renames the file associated with the current buffer. Also replaces any
+instances of the original local (non-directory) file name in this buffer with
+the new local file name."
   (interactive
    (if (not (buffer-file-name (current-buffer)))
        (error "%s is not a file buffer" (buffer-name (current-buffer)))
      (list (read-file-name "Rename to: "))))
   (let ((original-file-name (buffer-file-name (current-buffer))))
+    (save-excursion
+      (let ((search-string (file-name-nondirectory original-file-name))
+	    (replace-string (file-name-nondirectory new-file-name)))
+	(goto-char (point-min))
+	(while (search-forward search-string nil t)
+	  (replace-match replace-string nil t))))
     (write-file new-file-name t)
     (delete-file original-file-name)))
 
