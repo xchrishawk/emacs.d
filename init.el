@@ -78,6 +78,11 @@
 (require 'ido)
 (ido-mode t)
 
+;; -- Swift Mode --
+
+;; Open *.swift files in swift-mode
+(add-to-list 'auto-mode-alist '("\\.swift\\'" . swift-mode))
+
 ;; -- Racket Mode --
 
 (defun custom-racket-mode ()
