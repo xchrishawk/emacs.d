@@ -1,21 +1,24 @@
 ;; init.el
 ;; Chris Vig (chris@invictus.so)
 
-;; ---- Includes ----
+;; -- Includes --
 
 ;; Load other configuration files
 (load-file "~/.emacs.d/functions.el")
 
 ;; Load modules
-(load-file "~/.emacs.d/modules/ascii-table/ascii-table.el")
+(let ((default-directory "~/.emacs.d/modules"))
+  (normal-top-level-add-subdirs-to-load-path))
+(require 'ascii-table)
+(require 'swift-mode)
 
-;; ---- MELPA ----
+;; -- MELPA --
 
 ;; Enable the MELPA package archive
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
-;; ---- Key Customization ----
+;; -- Key Customization --
 
 ;; Opens the buffer list in the current window, instead of the other window.
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
@@ -24,12 +27,12 @@
 (global-set-key (kbd "C-.") 'other-window)
 (global-set-key (kbd "C-,") 'prev-window)
 
-;; ---- Hooks ----
+;; -- Hooks --
 
 ;; Delete trailing whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; ---- Appearance ----
+;; -- Appearance --
 
 ;; Don't show the startup screen
 (setq inhibit-startup-screen t)
@@ -53,12 +56,12 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs")
 (load-theme 'zenburn t)
 
-;; ---- Formatting ----
+;; -- Formatting --
 
 ;; Default auto-fill-mode fill-column to 80 instead of 72
 (setq-default fill-column 80)
 
-;; ---- Backup Files ----
+;; -- Backup Files --
 
 ;; Set backup file configuration as suggested at...
 ;; http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
@@ -69,13 +72,13 @@
       kept-old-versions 2
       version-control t)
 
-;; ---- IDO Mode ----
+;; -- IDO Mode --
 
 ;;; Enable IDO mode
 (require 'ido)
 (ido-mode t)
 
-;; ---- Racket Mode ----
+;; -- Racket Mode --
 
 (defun custom-racket-mode ()
   "Modify keymap used by racket-mode."
@@ -83,12 +86,12 @@
 
 (add-hook 'racket-mode-hook 'custom-racket-mode)
 
-;; ---- Org Mode ----
+;; -- Org Mode --
 
 ;; Fontify source code blocks in org files by default
 (setq org-src-fontify-natively t)
 
-;; ---- Set Initial Layout ----
+;; -- Set Initial Layout --
 
 ;; Finally, initialize the current frame
 (initialize)
