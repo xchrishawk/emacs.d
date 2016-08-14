@@ -1,5 +1,5 @@
 [submodule "zenburn-emacs"]
-	path = themes/zenburn-emacs
+	path = modules/zenburn-emacs
 	url = git@github.com:bbatsov/zenburn-emacs
 [submodule "modules/ascii-table"]
 	path = modules/ascii-table
