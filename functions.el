@@ -94,3 +94,13 @@ the new local file name."
 	 (chars-required (- column current-column)))
     (push-mark)
     (insert-char char chars-required)))
+
+(defun unindent-buffer ()
+  "Removes any leading whitespace before all lines in this buffer."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (dotimes (line (line-number-at-pos (point-max)))
+      (beginning-of-line)
+      (fixup-whitespace)
+      (forward-line))))
