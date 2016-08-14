@@ -53,7 +53,7 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Load zenburn theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/zenburn-emacs")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/modules/zenburn-emacs")
 (load-theme 'zenburn t)
 
 ;; -- Formatting --
