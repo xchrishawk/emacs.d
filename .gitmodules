@@ -4,3 +4,6 @@
 [submodule "modules/ascii-table"]
 	path = modules/ascii-table
 	url = git@github.com:xchrishawk/ascii-table.git
+[submodule "modules/swift-mode"]
+	path = modules/swift-mode
+	url = git@github.com:xchrishawk/swift-mode.git
