@@ -1,7 +1,7 @@
 ;; functions.el
 ;; Chris Vig (chris@invictus.so)
 
-;; ---- Initialization ----
+;; -- Initialization --
 
 (defun initialize ()
   "Resets the frame to its initial layout."
@@ -20,14 +20,14 @@
     (mapc 'kill-buffer (buffer-list))
     (initialize)))
 
-;; ---- Appearance ----
+;; -- Appearance --
 
 (defun set-font-size (size)
   "Sets the default font size."
   (interactive "nFont size: ")
   (set-face-attribute 'default nil :height (* size 10)))
 
-;; ---- Buffer Management ----
+;; -- Buffer Management --
 
 (defun buffer-exists (name)
   "Returns t if a buffer exists with the specified name."
@@ -53,7 +53,7 @@
 	(switch-to-buffer terminal-buffer-name)
       (ansi-term bash-path terminal-name))))
 
-;; ---- File Management ----
+;; -- File Management --
 
 (defun rename-current-buffer-file (new-file-name)
   "Renames the file associated with the current buffer. Also replaces any
@@ -73,14 +73,14 @@ the new local file name."
     (write-file new-file-name t)
     (delete-file original-file-name)))
 
-;; ---- Window Management ----
+;; -- Window Management --
 
 (defun prev-window (count)
   "Opposite of other-window."
   (interactive "p")
   (other-window (- count)))
 
-;; ---- Misc ----
+;; -- Misc --
 
 (defun insert-lambda-char ()
   "Inserts a lambda character (λ) at point."
