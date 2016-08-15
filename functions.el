@@ -1,6 +1,10 @@
 ;; functions.el
 ;; Chris Vig (chris@invictus.so)
 
+;; -- Requires --
+
+(require 'subr-x)
+
 ;; -- Initialization --
 
 (defun initialize ()
@@ -79,6 +83,43 @@ the new local file name."
   "Opposite of other-window."
   (interactive "p")
   (other-window (- count)))
+
+;; -- Racket Mode --
+
+(defun racket-move-contracts-from-define-to-provide ()
+  "Moves all function contracts from (define/contract ...) forms to the recommended
+(provide (contract-out ...)) form. The new (provide (contract-out ...)) form will
+be inserted at the current `point'."
+  (interactive)
+  (let ((contract-list nil))
+    (save-excursion
+      ;; Loop through all define/contracts in buffer
+      (goto-char (point-min))
+      (while (re-search-forward "(define/contract" nil t)
+	;; If we're in a comment or string, ignore this match
+	(unless (nth 8 (syntax-ppss))
+	  ;; Replace define/contract with define
+	  (replace-match "(define")
+	  (let (function-name contract)
+	    ;; Get function name
+	    (save-excursion
+	      (re-search-forward "(\\([A-Za-z\-]+\\)")
+	      (setq function-name (match-string 1)))
+	    ;; Extract contract from buffer
+	    (save-excursion
+	      (forward-sexp)
+	      (let ((marker (point)))
+		(forward-sexp)
+		(setq contract (string-trim (delete-and-extract-region marker (point))))))
+	    ;; Add function name and contract to list
+	    (push (cons function-name contract) contract-list)))))
+    ;; Insert the new (provide (contract-out ...)) block
+    (let ((marker (point)))
+      (insert "(provide\n(contract-out")
+      (dolist (item contract-list)
+	(insert (format "\n[%s %s]" (car item) (cdr item))))
+      (insert "))")
+      (indent-region marker (point)))))
 
 ;; -- Misc --
 
