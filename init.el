@@ -85,16 +85,22 @@
 
 ;; -- Racket Mode --
 
-(defun custom-racket-mode ()
+(defun customize-racket-mode ()
   "Modify keymap used by racket-mode."
   (local-set-key (kbd "C-c l") 'insert-lambda-char))
 
-(add-hook 'racket-mode-hook 'custom-racket-mode)
+(add-hook 'racket-mode-hook 'customize-racket-mode)
 
 ;; -- Org Mode --
 
 ;; Fontify source code blocks in org files by default
 (setq org-src-fontify-natively t)
+
+(defun customize-org-mode ()
+  "Modify keymap used by org-mode."
+  (local-unset-key (kbd "C-,")))
+
+(add-hook 'org-mode-hook 'customize-org-mode)
 
 ;; -- Set Initial Layout --
 
