@@ -7,3 +7,6 @@
 [submodule "modules/swift-mode"]
 	path = modules/swift-mode
 	url = git@github.com:xchrishawk/swift-mode.git
+[submodule "modules/ob-racket"]
+	path = modules/ob-racket
+	url = git@github.com:xchrishawk/ob-racket.git
