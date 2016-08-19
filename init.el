@@ -109,6 +109,10 @@
  'org-babel-load-languages
  '((racket . t)))
 
+;; -- Slime --
+
+(setq inferior-lisp-program "/usr/bin/sbcl")
+
 ;; -- Set Initial Layout --
 
 ;; Finally, initialize the current frame
