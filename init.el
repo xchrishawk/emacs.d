@@ -113,6 +113,12 @@
 
 (setq inferior-lisp-program "/usr/bin/sbcl")
 
+;; -- MacOS --
+
+;; Swap the default command and option keybindings on macOS
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier 'super)
+
 ;; -- Set Initial Layout --
 
 ;; Finally, initialize the current frame
