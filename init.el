@@ -102,6 +102,13 @@
 
 (add-hook 'org-mode-hook 'customize-org-mode)
 
+;; -- Org Babel --
+
+;; Enable Racket in Babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((racket . t)))
+
 ;; -- Set Initial Layout --
 
 ;; Finally, initialize the current frame
