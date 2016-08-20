@@ -1,12 +1,12 @@
 [submodule "zenburn-emacs"]
-	path = modules/zenburn-emacs
+	path = lisp/zenburn-emacs
 	url = git@github.com:bbatsov/zenburn-emacs
 [submodule "modules/ascii-table"]
-	path = modules/ascii-table
+	path = lisp/ascii-table
 	url = git@github.com:xchrishawk/ascii-table.git
 [submodule "modules/swift-mode"]
-	path = modules/swift-mode
+	path = lisp/swift-mode
 	url = git@github.com:xchrishawk/swift-mode.git
 [submodule "modules/ob-racket"]
-	path = modules/ob-racket
+	path = lisp/ob-racket
 	url = git@github.com:xchrishawk/ob-racket.git
