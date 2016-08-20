@@ -22,12 +22,11 @@
 ;; -- Requires --
 
 ;; Do initial setup
+(require 'local-functions)
 (require 'local-setup)
 
 ;; Load modules
 (require 'ascii-table)
-(require 'hyperspec)
-(require 'local-functions)
 (require 'swift-mode)
 
 ;; -- Set Initial Layout --
