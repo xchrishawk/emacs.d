@@ -86,19 +86,6 @@
 (require 'ido)
 (ido-mode t)
 
-;; -- Swift Mode --
-
-;; Open *.swift files in swift-mode
-(add-to-list 'auto-mode-alist '("\\.swift\\'" . swift-mode))
-
-;; -- Racket Mode --
-
-(defun customize-racket-mode ()
-  "Custom hook for `racket-mode'."
-  (local-set-key (kbd "C-c l") 'insert-lambda-char))
-
-(add-hook 'racket-mode-hook 'customize-racket-mode)
-
 ;; -- Org Mode --
 
 ;; Fontify source code blocks in org files by default
@@ -118,11 +105,24 @@
  '((racket . t)
    (lisp . t)))
 
+;; -- Racket Mode --
+
+(defun customize-racket-mode ()
+  "Custom hook for `racket-mode'."
+  (local-set-key (kbd "C-c l") 'insert-lambda-char))
+
+(add-hook 'racket-mode-hook 'customize-racket-mode)
+
 ;; -- Slime --
 
 (setq inferior-lisp-program "/usr/bin/sbcl")
 
-;; -- MacOS --
+;; -- Swift Mode --
+
+;; Open *.swift files in swift-mode
+(add-to-list 'auto-mode-alist '("\\.swift\\'" . swift-mode))
+
+;; -- MacOS-Specific Setup --
 
 ;; Swap the default command and option keybindings on macOS
 (setq mac-command-modifier 'meta)
