@@ -10,6 +10,7 @@
 (let ((default-directory "~/.emacs.d/modules"))
   (normal-top-level-add-subdirs-to-load-path))
 (require 'ascii-table)
+(require 'hyperspec)
 (require 'swift-mode)
 
 ;; -- MELPA --
@@ -75,6 +76,14 @@
       kept-new-versions 6
       kept-old-versions 2
       version-control t)
+
+;; -- URL Browsing --
+
+;; Open CLHS links in eww
+(setq browse-url-browser-function
+      (list
+       (cons common-lisp-hyperspec-root 'eww-browse-url)
+       (cons "." 'browse-url-default-browser)))
 
 ;; -- IDO Mode --
 
