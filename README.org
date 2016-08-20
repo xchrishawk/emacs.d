@@ -4,6 +4,7 @@ This is my personal =.emacs.d= directory.
 
 ** Installed Packages
 
+- [[http://company-mode.github.io/][Company Mode]]
 - [[https://github.com/magit/magit][Magit]]
 - [[https://github.com/greghendershott/racket-mode][Racket Mode]]
 - [[https://common-lisp.net/project/slime/][SLIME]]
