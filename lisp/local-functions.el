@@ -1,5 +1,9 @@
-;; functions.el
+;; local-functions.el
 ;; Chris Vig (chris@invictus.so)
+
+;; -- Provides --
+
+(provide 'local-functions)
 
 ;; -- Requires --
 
