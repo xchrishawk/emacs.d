@@ -107,7 +107,8 @@
 ;; Enable Racket in Babel
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((racket . t)))
+ '((racket . t)
+   (lisp . t)))
 
 ;; -- Slime --
 
