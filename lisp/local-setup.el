@@ -80,6 +80,12 @@
        (cons common-lisp-hyperspec-root 'eww-browse-url)
        (cons "." 'browse-url-default-browser)))
 
+;; -- Company Mode --
+
+;; Use C-n and C-p to cycle through options
+(define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+(define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+
 ;; -- IDO Mode --
 
 ;;; Enable IDO mode
