@@ -90,7 +90,7 @@
 ;; -- Racket Mode --
 
 (defun customize-racket-mode ()
-  "Modify keymap used by racket-mode."
+  "Custom hook for `racket-mode'."
   (local-set-key (kbd "C-c l") 'insert-lambda-char))
 
 (add-hook 'racket-mode-hook 'customize-racket-mode)
@@ -101,7 +101,7 @@
 (setq org-src-fontify-natively t)
 
 (defun customize-org-mode ()
-  "Modify keymap used by org-mode."
+  "Custom hook for `org-mode'."
   (local-unset-key (kbd "C-,")))
 
 (add-hook 'org-mode-hook 'customize-org-mode)
