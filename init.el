@@ -27,6 +27,10 @@
 (global-set-key (kbd "C-.") 'other-window)
 (global-set-key (kbd "C-,") 'prev-window)
 
+;; Key bindings to bring up Magit
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x C-g") 'magit-dispatch-popup)
+
 ;; -- Hooks --
 
 ;; Delete trailing whitespace before saving
