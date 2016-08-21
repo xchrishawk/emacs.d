@@ -92,6 +92,14 @@
 ;;; Enable IDO mode
 (ido-mode t)
 
+;; -- MIXAL Mode --
+
+(defun customize-mixal-mode ()
+  "Custom hook for `mixal-mode'."
+  (local-set-key (kbd "TAB") 'self-insert-command))
+
+(add-hook 'mixal-mode-hook 'customize-mixal-mode)
+
 ;; -- Org Mode --
 
 ;; Fontify source code blocks in org files by default
