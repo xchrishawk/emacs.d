@@ -31,6 +31,9 @@
 
 ;; -- Hooks --
 
+;; Add hooks for after initialization
+(add-hook 'after-init-hook 'initialize)
+
 ;; Delete trailing whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 

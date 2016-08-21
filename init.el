@@ -34,8 +34,3 @@
 ;; Load modules
 (require 'ascii-table)
 (require 'swift-mode)
-
-;; -- Set Initial Layout --
-
-;; Finally, initialize the current frame
-(initialize)
