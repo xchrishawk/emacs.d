@@ -19,6 +19,12 @@
   (dolist (path local-theme-paths)
     (add-to-list 'custom-theme-load-path path)))
 
+;; -- Packages --
+
+;; Set up package manager
+(require 'package)
+(package-initialize)
+
 ;; -- Requires --
 
 ;; Do initial setup

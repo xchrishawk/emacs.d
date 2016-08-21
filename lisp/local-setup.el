@@ -5,17 +5,16 @@
 
 (provide 'local-setup)
 
-;; -- Packages --
-
-;; Enable the MELPA package archive
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
-
 ;; -- Requires --
 
 (require 'company)
 (require 'hyperspec)
+(require 'package)
+
+;; -- MELPA --
+
+;; Enable the MELPA package archive
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
 ;; -- Key Customization --
 
