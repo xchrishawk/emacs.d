@@ -26,10 +26,17 @@
 
 ;; -- Requires --
 
-;; Do initial setup
-(require 'local-functions)
-(require 'local-setup)
+;; Load 3rd-party modules
+(require 'company)
+(require 'hyperspec)
+(require 'ido)
+(require 'magit)
+(require 'package)
 
 ;; Load modules which are included as Git repos under lisp/
 (require 'ascii-table)
 (require 'swift-mode)
+
+;; Do initial setup
+(require 'local-functions)
+(require 'local-setup)

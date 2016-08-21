@@ -35,6 +35,22 @@
   (interactive "nFont size: ")
   (set-face-attribute 'default nil :height (* size 10)))
 
+;; -- Module Management --
+
+(defmacro if-feature-loaded (module then-form else-form)
+  "Executes THEN-FORM if and only if MODULE is already loaded, otherwise executes
+ELSE-FORM."
+  (declare (indent 2))
+  `(if (featurep ,module)
+       ,then-form
+     ,else-form))
+
+(defmacro when-feature-loaded (module &rest body)
+  "Executes BODY if and only if MODULE is already loaded."
+  (declare (indent defun))
+  `(when (featurep ,module)
+     ,@body))
+
 ;; -- Buffer Management --
 
 (defun buffer-exists (name)

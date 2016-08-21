@@ -5,12 +5,6 @@
 
 (provide 'local-setup)
 
-;; -- Requires --
-
-(require 'company)
-(require 'hyperspec)
-(require 'package)
-
 ;; -- MELPA --
 
 ;; Enable the MELPA package archive
@@ -26,8 +20,9 @@
 (global-set-key (kbd "C-,") 'prev-window)
 
 ;; Key bindings to bring up Magit
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x C-g") 'magit-dispatch-popup)
+(when-feature-loaded 'magit
+  (global-set-key (kbd "C-x g") 'magit-status)
+  (global-set-key (kbd "C-x C-g") 'magit-dispatch-popup))
 
 ;; -- Hooks --
 
@@ -78,22 +73,23 @@
 
 ;; -- URL Browsing --
 
-;; Open CLHS links in eww
-(setq browse-url-browser-function
-      (list
-       (cons common-lisp-hyperspec-root 'eww-browse-url)
-       (cons "." 'browse-url-default-browser)))
+;; Set default browser for specific URL categories
+(let ((browser-functions nil))
+  (push (cons "." 'browse-url-default-browser) browser-functions)
+  (when-feature-loaded 'hyperspec
+    (push (cons common-lisp-hyperspec-root 'eww-browse-url) browser-functions))
+  (setq browse-url-browser-function browser-functions))
 
 ;; -- Company Mode --
 
 ;; Use C-n and C-p to cycle through options
-(define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
-(define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+(when-feature-loaded 'company
+  (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort))
 
 ;; -- IDO Mode --
 
 ;;; Enable IDO mode
-(require 'ido)
 (ido-mode t)
 
 ;; -- Org Mode --
@@ -121,16 +117,19 @@
   "Custom hook for `racket-mode'."
   (local-set-key (kbd "C-c l") 'insert-lambda-char))
 
-(add-hook 'racket-mode-hook 'customize-racket-mode)
+(when-feature-loaded 'racket-mode
+  (add-hook 'racket-mode-hook 'customize-racket-mode))
 
 ;; -- Slime --
 
-(setq inferior-lisp-program "/usr/bin/sbcl")
+(when-feature-loaded 'slime
+  (setq inferior-lisp-program "/usr/bin/sbcl"))
 
 ;; -- Swift Mode --
 
 ;; Open *.swift files in swift-mode
-(add-to-list 'auto-mode-alist '("\\.swift\\'" . swift-mode))
+(when-feature-loaded 'swift-mode
+  (add-to-list 'auto-mode-alist '("\\.swift\\'" . swift-mode)))
 
 ;; -- MacOS-Specific Setup --
 
