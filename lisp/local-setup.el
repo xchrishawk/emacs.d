@@ -22,7 +22,7 @@
 ;; Key bindings to bring up Magit
 (when-feature-loaded 'magit
   (global-set-key (kbd "C-x g") 'magit-status)
-  (global-set-key (kbd "C-x C-g") 'magit-dispatch-popup))
+  (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup))
 
 ;; -- Hooks --
 
