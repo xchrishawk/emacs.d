@@ -45,8 +45,8 @@
 (tool-bar-mode -1)
 (toggle-scroll-bar -1)
 
-;; Set default font size to 12
-(set-font-size 12)
+;; Set default font size to 10
+(set-font-size 10)
 
 ;; Set frame to slightly transparent, and default to maximized
 (add-to-list 'default-frame-alist '(alpha . (95 . 70)))
