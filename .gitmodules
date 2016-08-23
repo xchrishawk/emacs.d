@@ -10,3 +10,6 @@
 [submodule "modules/ob-racket"]
 	path = lisp/ob-racket
 	url = git@github.com:xchrishawk/ob-racket.git
+[submodule "ob-mixal"]
+	path = lisp/ob-mixal
+	url = git@github.com:xchrishawk/ob-mixal.git
