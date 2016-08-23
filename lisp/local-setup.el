@@ -113,11 +113,17 @@
 
 ;; -- Org Babel --
 
-;; Enable Racket in Babel
+;; Enable Racket, Common Lisp, and MIXAL in Babel
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((racket . t)
-   (lisp . t)))
+   (lisp . t)
+   (mixal . t)))
+
+;; Don't prompt before executing known languages
+(defun custom-org-confirm-babel-evaluate (lang body)
+  (not (member lang '("racket" "lisp" "mixal"))))
+(setq org-confirm-babel-evaluate 'custom-org-confirm-babel-evaluate)
 
 ;; -- Racket Mode --
 
