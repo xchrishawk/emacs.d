@@ -7,6 +7,7 @@
 (let ((local-load-paths
        (list "~/.emacs.d/lisp"
 	     "~/.emacs.d/lisp/ascii-table"
+	     "~/.emacs.d/lisp/ob-mixal"
 	     "~/.emacs.d/lisp/ob-racket"
 	     "~/.emacs.d/lisp/swift-mode")))
   (dolist (path local-load-paths)
