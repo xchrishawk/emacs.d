@@ -8,8 +8,7 @@
        (list "~/.emacs.d/lisp"
 	     "~/.emacs.d/lisp/ascii-table"
 	     "~/.emacs.d/lisp/ob-mixal"
-	     "~/.emacs.d/lisp/ob-racket"
-	     "~/.emacs.d/lisp/swift-mode")))
+	     "~/.emacs.d/lisp/ob-racket"))))
   (dolist (path local-load-paths)
     (add-to-list 'load-path path)))
 
@@ -36,7 +35,6 @@
 
 ;; Load modules which are included as Git repos under lisp/
 (require 'ascii-table)
-(require 'swift-mode)
 
 ;; Do initial setup
 (require 'local-functions)

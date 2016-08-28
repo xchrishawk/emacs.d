@@ -139,12 +139,6 @@
 (when-feature-loaded 'slime
   (setq inferior-lisp-program "/usr/bin/sbcl"))
 
-;; -- Swift Mode --
-
-;; Open *.swift files in swift-mode
-(when-feature-loaded 'swift-mode
-  (add-to-list 'auto-mode-alist '("\\.swift\\'" . swift-mode)))
-
 ;; -- MacOS-Specific Setup --
 
 ;; Swap the default command and option keybindings on macOS
