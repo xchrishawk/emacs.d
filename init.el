@@ -28,11 +28,11 @@
 ;; -- Requires --
 
 ;; Load 3rd-party modules
-(require 'company)
-(require 'hyperspec)
-(require 'ido)
-(require 'magit)
-(require 'package)
+(require 'company nil t)
+(require 'hyperspec nil t)
+(require 'ido nil t)
+(require 'magit nil t)
+(require 'package nil t)
 
 ;; Load modules which are included as Git repos under lisp/
 (require 'ascii-table)
