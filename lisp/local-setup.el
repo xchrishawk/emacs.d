@@ -107,7 +107,8 @@
 
 (defun customize-org-mode ()
   "Custom hook for `org-mode'."
-  (local-unset-key (kbd "C-,")))
+  (local-unset-key (kbd "C-,"))
+  (local-set-key (kbd "C-c C-<left>") 'insert-left-arrow-char))
 
 (add-hook 'org-mode-hook 'customize-org-mode)
 

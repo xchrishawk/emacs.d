@@ -148,6 +148,11 @@ be inserted at the current `point'."
   (interactive)
   (insert "λ"))
 
+(defun insert-left-arrow-char ()
+  "Inserts a left arrow character (←) at point."
+  (interactive)
+  (insert "←"))
+
 (defun fill-to-column (column char)
   "Fills the current line with CHAR up to column COLUMN. Sets mark at current point."
   (interactive "NFill to column: \ncCharacter:")
