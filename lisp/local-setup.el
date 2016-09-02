@@ -80,6 +80,15 @@
     (push (cons common-lisp-hyperspec-root 'eww-browse-url) browser-functions))
   (setq browse-url-browser-function browser-functions))
 
+;; -- CC Mode --
+
+(defun customize-c-mode ()
+  "Custom hook for `c-mode'."
+  (setq c-default-style "bsd")
+  (setq c-basic-offset 2))
+
+(add-hook 'c-mode-hook 'customize-c-mode)
+
 ;; -- Company Mode --
 
 ;; Use C-n and C-p to cycle through options
