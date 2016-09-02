@@ -96,6 +96,11 @@
   (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
   (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort))
 
+;; -- GDB Mode --
+
+;; Enable many windows mode
+(setq gdb-many-windows t)
+
 ;; -- IDO Mode --
 
 ;;; Enable IDO mode
