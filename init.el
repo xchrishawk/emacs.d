@@ -8,7 +8,7 @@
        (list "~/.emacs.d/lisp"
 	     "~/.emacs.d/lisp/ascii-table"
 	     "~/.emacs.d/lisp/ob-mixal"
-	     "~/.emacs.d/lisp/ob-racket"))))
+	     "~/.emacs.d/lisp/ob-racket")))
   (dolist (path local-load-paths)
     (add-to-list 'load-path path)))
 
