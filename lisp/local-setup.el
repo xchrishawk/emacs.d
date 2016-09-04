@@ -106,6 +106,15 @@
 ;;; Enable IDO mode
 (ido-mode t)
 
+;; -- Java Mode --
+
+(defun customize-java-mode ()
+  "Custom hook for `java-mode'."
+  (setq c-default-style "bsd")
+  (setq c-basic-offset 2))
+
+(add-hook 'java-mode-hook 'customize-java-mode)
+
 ;; -- MIXAL Mode --
 
 (defun customize-mixal-mode ()
