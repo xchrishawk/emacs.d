@@ -104,6 +104,19 @@ the new local file name."
   (interactive "p")
   (other-window (- count)))
 
+;; -- Java Mode --
+
+(defun ant (build-xml-directory target)
+  "Searches up the directory path for a file named \"build.xml\". If found, prompts
+for an Ant target to run, and then runs Ant in a compilation buffer."
+  (interactive
+   (let ((build-xml-dir (locate-dominating-file (buffer-file-name (current-buffer)) "build.xml")))
+     (if (not build-xml-dir) (error "No build.xml found!"))
+     (list build-xml-dir (read-string "Ant target: "))))
+  (let* ((build-xml-path (expand-file-name "build.xml" build-xml-directory))
+	 (command (mapconcat 'identity (list "ant" target "-f" build-xml-path) " ")))
+    (compile command)))
+
 ;; -- Racket Mode --
 
 (defun racket-move-contracts-from-define-to-provide ()
