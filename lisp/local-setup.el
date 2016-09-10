@@ -5,6 +5,11 @@
 
 (provide 'local-setup)
 
+;; -- User Information --
+
+;; Set email address
+(setq user-mail-address "chris@invictus.so")
+
 ;; -- MELPA --
 
 ;; Enable the MELPA package archive
