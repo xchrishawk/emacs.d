@@ -156,6 +156,29 @@ be inserted at the current `point'."
 
 ;; -- Misc --
 
+(defun insert-header-comment ()
+  "Inserts a mode-appropriate header comment at the beginning of the buffer,
+unless the buffer already begins with a header comment."
+  (interactive)
+  (barf-if-buffer-read-only)
+  (let ((comment nil))
+    (cond
+     ((eq major-mode 'emacs-lisp-mode)
+      (setq comment (format ";; %s\n;; %s (%s)\n\n"
+			    (file-name-nondirectory (buffer-file-name (current-buffer)))
+			    (user-full-name)
+			    user-mail-address)))
+     ((eq major-mode 'java-mode)
+      (setq comment (format "/**\n * %s\n * @author %s (%s)\n */\n\n"
+			    (file-name-nondirectory (buffer-file-name (current-buffer)))
+			    (user-full-name)
+			    user-mail-address))))
+    (or comment (error "No format defined for this mode"))
+    (save-excursion
+      (goto-char (point-min))
+      (unless (string-prefix-p comment (buffer-string))
+	(insert comment)))))
+
 (defun insert-lambda-char ()
   "Inserts a lambda character (λ) at point."
   (interactive)
