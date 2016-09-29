@@ -124,6 +124,35 @@ as well."
 	  (run-on-directories path fn recursively))
 	(funcall fn path)))))
 
+;; -- Template Projects --
+
+(defun template-project (template-name project-name project-dir)
+  "Builds a template project using TEMPLATE-NAME. Project name is set to
+PROJECT-NAME, and project is placed in PROJECT-DIR."
+  (interactive "sTemplate name: \nsProject name: \nGProject directory: ")
+  (let* ((template-dir (concat (file-name-as-directory (expand-file-name "~/Templates")) template-name)))
+    ;; Recursively copy entire directory structure
+    (copy-directory template-dir project-dir nil nil t)
+    ;; Fix up directory names
+    (run-on-directories
+     project-dir
+     (lambda (dir)
+       (when (string-match "\\(.+\\)\$\{TEMPLATE\}\\(/\\)?" dir)
+	 (rename-file dir (concat (file-name-as-directory (match-string 1 dir)) project-name))))
+     t)
+    ;; Fix up file contents
+    (run-on-files
+     project-dir
+     (lambda (file)
+       (when (not (string-match "/\\.git/" file))
+	 (message (concat "scanning " file))
+	 (with-temp-file file
+	   (insert-file-contents file)
+	   (goto-char (point-min))
+	   (while (re-search-forward "\$\{TEMPLATE\}" nil t)
+	     (replace-match project-name t)))))
+     t)))
+
 ;; -- Window Management --
 
 (defun prev-window (count)
