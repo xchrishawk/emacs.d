@@ -145,13 +145,14 @@ PROJECT-NAME, and project is placed in PROJECT-DIR."
      project-dir
      (lambda (file)
        (when (not (string-match "/\\.git/" file))
-	 (message (concat "scanning " file))
 	 (with-temp-file file
 	   (insert-file-contents file)
 	   (goto-char (point-min))
 	   (while (re-search-forward "\$\{TEMPLATE\}" nil t)
 	     (replace-match project-name t)))))
-     t)))
+     t)
+    ;; Switch to project directory
+    (cd project-dir)))
 
 ;; -- Window Management --
 
