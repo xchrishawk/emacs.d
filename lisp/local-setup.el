@@ -101,6 +101,11 @@
   (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
   (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort))
 
+;; -- Dired Mode --
+
+;; Allow using dired-find-alternate-file command
+(put 'dired-find-alternate-file 'disabled nil)
+
 ;; -- GDB Mode --
 
 ;; Enable many windows mode
