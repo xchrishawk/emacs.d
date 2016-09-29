@@ -97,6 +97,33 @@ the new local file name."
     (write-file new-file-name t)
     (delete-file original-file-name)))
 
+(defun run-on-files (dir fn &optional recursively)
+  "Runs the function FN on all files in DIR. If RECURSIVELY is non-nil, the
+function will recurse on all sub-directories of DIR as well."
+  (dolist (file (directory-files dir))
+    (let ((path (concat (file-name-as-directory dir) file)))
+      (cond
+       ((file-regular-p path)
+	(funcall fn path))
+       ((and recursively
+	     (not (string= "." file))
+	     (not (string= ".." file))
+	     (file-accessible-directory-p path))
+	(run-on-files path fn recursively))))))
+
+(defun run-on-directories (dir fn &optional recursively)
+  "Runs the function FN on all directories in DIR (not including DIR itself). If
+RECURSIVELY is non-nil, the function will recurse on all sub-directories of DIR
+as well."
+  (dolist (file (directory-files dir))
+    (let ((path (concat (file-name-as-directory dir) file)))
+      (when (and (not (string= "." file))
+		 (not (string= ".." file))
+		 (file-directory-p path))
+	(when (and recursively (file-accessible-directory-p path))
+	  (run-on-directories path fn recursively))
+	(funcall fn path)))))
+
 ;; -- Window Management --
 
 (defun prev-window (count)
