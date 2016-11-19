@@ -133,6 +133,11 @@
 
 (add-hook 'mixal-mode-hook 'customize-mixal-mode)
 
+;; -- Octave Mode --
+
+(autoload 'octave-mode "octave-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
+
 ;; -- Org Mode --
 
 ;; Fontify source code blocks in org files by default
