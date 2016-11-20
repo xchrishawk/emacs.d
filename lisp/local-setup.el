@@ -178,6 +178,11 @@
 (when-feature-loaded 'slime
   (setq inferior-lisp-program "/usr/bin/sbcl"))
 
+;; -- Function Enablement --
+
+;; Enable erase-buffer
+(put 'erase-buffer 'disabled nil)
+
 ;; -- MacOS-Specific Setup --
 
 ;; Swap the default command and option keybindings on macOS
