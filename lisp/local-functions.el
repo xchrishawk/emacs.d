@@ -229,6 +229,11 @@ unless the buffer already begins with a header comment."
       (setq comment (format "/**\n * %s\n * @author %s (%s)\n */\n\n"
 			    (file-name-nondirectory (buffer-file-name (current-buffer)))
 			    (user-full-name)
+			    user-mail-address)))
+     ((eq major-mode 'c-mode)
+      (setq comment (format "/**\n * %s\n * %s (%s)\n */\n\n"
+			    (file-name-nondirectory (buffer-file-name (current-buffer)))
+			    (user-full-name)
 			    user-mail-address))))
     (or comment (error "No format defined for this mode"))
     (save-excursion
