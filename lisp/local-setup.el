@@ -115,6 +115,7 @@
 
 ;;; Enable IDO mode
 (ido-mode t)
+(setq ido-enable-flex-matching t)
 
 ;; -- Java Mode --
 
