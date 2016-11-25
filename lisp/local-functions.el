@@ -161,6 +161,19 @@ PROJECT-NAME, and project is placed in PROJECT-DIR."
   (interactive "p")
   (other-window (- count)))
 
+;; -- Make --
+
+(defun make (makefile-dir target)
+  "Searches up the directory path for a file named \"Makefile\". If found, prompts
+for a Makefile target to build, and then runs Make in a compilation buffer."
+  (interactive
+   (let ((makefile-dir (locate-dominating-file (buffer-file-name (current-buffer)) "Makefile")))
+     (if (not makefile-dir) (error "No Makefile found!"))
+     (list makefile-dir (read-string "Target: "))))
+  (let* ((makefile-path (expand-file-name "Makefile" makefile-dir))
+	 (command (mapconcat 'identity (list "make" "-C" makefile-dir "-f" makefile-path target) " ")))
+    (compile command)))
+
 ;; -- Java Mode --
 
 (defun ant (build-xml-directory target)
