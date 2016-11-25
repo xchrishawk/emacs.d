@@ -90,7 +90,11 @@
 (defun customize-c-mode ()
   "Custom hook for `c-mode'."
   (setq c-default-style "bsd")
-  (setq c-basic-offset 2))
+  (setq c-basic-offset 2)
+  (setq c-macro-names-with-semicolon
+	"G_[[:upper:]_]+")
+  (c-make-macro-with-semi-re)
+  (local-set-key (kbd "C-c o") 'ff-find-other-file))
 
 (add-hook 'c-mode-hook 'customize-c-mode)
 
