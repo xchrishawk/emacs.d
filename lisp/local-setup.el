@@ -96,8 +96,8 @@
   (c-make-macro-with-semi-re)
   (local-set-key (kbd "C-c o") 'ff-find-other-file))
 
-(add-hook 'c-mode-hook 'customize-c-mode)
-(add-hook 'c++-mode-hook 'customize-c-mode)
+(add-hook 'c-mode-hook 'customize-cc-mode)
+(add-hook 'c++-mode-hook 'customize-cc-mode)
 
 ;; -- Company Mode --
 
