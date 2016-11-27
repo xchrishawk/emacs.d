@@ -87,8 +87,8 @@
 
 ;; -- CC Mode --
 
-(defun customize-c-mode ()
-  "Custom hook for `c-mode'."
+(defun customize-cc-mode ()
+  "Custom hook for `c-mode' and derivatives."
   (setq c-default-style "bsd")
   (setq c-basic-offset 2)
   (setq c-macro-names-with-semicolon
@@ -97,6 +97,7 @@
   (local-set-key (kbd "C-c o") 'ff-find-other-file))
 
 (add-hook 'c-mode-hook 'customize-c-mode)
+(add-hook 'c++-mode-hook 'customize-c-mode)
 
 ;; -- Company Mode --
 
