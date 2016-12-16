@@ -243,16 +243,18 @@ unless the buffer already begins with a header comment."
 			    (file-name-nondirectory (buffer-file-name (current-buffer)))
 			    (user-full-name)
 			    user-mail-address)))
-     ((eq major-mode 'c-mode)
-      (setq comment (format "/**\n * %s\n * %s (%s)\n */\n\n"
+     ((or (eq major-mode 'c-mode)
+	  (eq major-mode 'c++-mode))
+      (setq comment (format "/**\n * @file	%s\n * @author	%s (%s)\n * @date	%s\n */\n\n"
 			    (file-name-nondirectory (buffer-file-name (current-buffer)))
 			    (user-full-name)
-			    user-mail-address))))
+			    user-mail-address
+			    (format-time-string "%Y/%m/%d")))))
     (or comment (error "No format defined for this mode"))
-    (save-excursion
+    (unless (string-prefix-p comment (buffer-string))
       (goto-char (point-min))
-      (unless (string-prefix-p comment (buffer-string))
-	(insert comment)))))
+      (insert comment)
+      (goto-char (length comment)))))
 
 (defun insert-lambda-char ()
   "Inserts a lambda character (λ) at point."
