@@ -38,4 +38,5 @@
 
 ;; Do initial setup
 (require 'local-functions)
+(require 'local-make)
 (require 'local-setup)
