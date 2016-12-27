@@ -65,6 +65,9 @@
 ;; Default auto-fill-mode fill-column to 80 instead of 72
 (setq-default fill-column 80)
 
+;; Never use tabs
+(setq-default indent-tabs-mode nil)
+
 ;; -- Backup Files --
 
 ;; Set backup file configuration as suggested at...
