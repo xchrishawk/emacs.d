@@ -9,4 +9,5 @@ auto-save-list/
 bookmarks
 elpa/
 ido.last
+session.*
 url/
