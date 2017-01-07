@@ -39,6 +39,11 @@
       kept-old-versions 2
       version-control t)
 
+;; -- Customization File --
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file 'noerror)
+
 ;; -- Enable Functions --
 
 (put 'dired-find-alternate-file 'disabled nil)
