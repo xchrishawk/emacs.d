@@ -117,6 +117,11 @@
 
 (add-hook 'org-mode-hook 'customize-org-mode)
 
+;; -- User Info --
+
+(setq user-full-name "Chris Vig")
+(setq user-mail-address "chris@invictus.so")
+
 ;; -- MacOS-Specific Setup --
 
 ;; Swap default command and option keybindings so my pinkie doesn't fall off

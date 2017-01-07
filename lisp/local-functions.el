@@ -40,6 +40,104 @@
 	(switch-to-buffer terminal-buffer-name)
       (ansi-term bash-path terminal-name))))
 
+;; -- Editing --
+
+(defun fill-to-column (column char)
+  "Fills the current line with CHAR up to column COLUMN. Sets mark at current point."
+  (interactive "NFill to column: \ncCharacter:")
+  (let* ((current-column (- (point) (line-beginning-position)))
+	 (chars-required (- column current-column)))
+    (push-mark)
+    (insert-char char chars-required)))
+
+(defun insert-header-comment ()
+  "Inserts a mode-appropriate header comment at the beginning of the buffer,
+unless the buffer already begins with a header comment."
+  (interactive)
+  (barf-if-buffer-read-only)
+  (let ((comment nil))
+    (cond
+     ((eq major-mode 'emacs-lisp-mode)
+      (setq comment (format ";;\n;; %s\n;; %s (%s)\n;;\n\n"
+			    (file-name-nondirectory (buffer-file-name (current-buffer)))
+			    (user-full-name)
+			    user-mail-address)))
+     ((eq major-mode 'java-mode)
+      (setq comment (format "/**\n * %s\n * @author %s (%s)\n */\n\n"
+			    (file-name-nondirectory (buffer-file-name (current-buffer)))
+			    (user-full-name)
+			    user-mail-address)))
+     ((or (eq major-mode 'c-mode)
+	  (eq major-mode 'c++-mode))
+      (setq comment (format "/**\n * @file	%s\n * @author	%s (%s)\n * @date	%s\n */\n\n"
+			    (file-name-nondirectory (buffer-file-name (current-buffer)))
+			    (user-full-name)
+			    user-mail-address
+			    (format-time-string "%Y/%m/%d")))))
+    (or comment (error "No format defined for this mode"))
+    (unless (string-prefix-p comment (buffer-string))
+      (goto-char (point-min))
+      (insert comment)
+      (goto-char (length comment)))))
+
+
+(defun unindent-buffer ()
+  "Removes any leading whitespace before all lines in this buffer."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (dotimes (line (line-number-at-pos (point-max)))
+      (beginning-of-line)
+      (fixup-whitespace)
+      (forward-line))))
+
+;; -- File Management --
+
+(defun rename-current-buffer-file (new-file-name)
+  "Renames the file associated with the current buffer. Also replaces any
+instances of the original local (non-directory) file name in this buffer with
+the new local file name."
+  (interactive
+   (if (not (buffer-file-name (current-buffer)))
+       (error "%s is not a file buffer" (buffer-name (current-buffer)))
+     (list (read-file-name "Rename to: "))))
+  (let ((original-file-name (buffer-file-name (current-buffer))))
+    (save-excursion
+      (let ((search-string (file-name-nondirectory original-file-name))
+	    (replace-string (file-name-nondirectory new-file-name)))
+	(goto-char (point-min))
+	(while (search-forward search-string nil t)
+	  (replace-match replace-string nil t))))
+    (write-file new-file-name t)
+    (delete-file original-file-name)))
+
+(defun run-on-files (dir fn &optional recursively)
+  "Runs the function FN on all files in DIR. If RECURSIVELY is non-nil, the
+function will recurse on all sub-directories of DIR as well."
+  (dolist (file (directory-files dir))
+    (let ((path (concat (file-name-as-directory dir) file)))
+      (cond
+       ((file-regular-p path)
+	(funcall fn path))
+       ((and recursively
+	     (not (string= "." file))
+	     (not (string= ".." file))
+	     (file-accessible-directory-p path))
+	(run-on-files path fn recursively))))))
+
+(defun run-on-directories (dir fn &optional recursively)
+  "Runs the function FN on all directories in DIR (not including DIR itself). If
+RECURSIVELY is non-nil, the function will recurse on all sub-directories of DIR
+as well."
+  (dolist (file (directory-files dir))
+    (let ((path (concat (file-name-as-directory dir) file)))
+      (when (and (not (string= "." file))
+		 (not (string= ".." file))
+		 (file-directory-p path))
+	(when (and recursively (file-accessible-directory-p path))
+	  (run-on-directories path fn recursively))
+	(funcall fn path)))))
+
 ;; -- Initialization --
 
 (defun initialize ()
