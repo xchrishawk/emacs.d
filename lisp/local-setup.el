@@ -81,6 +81,11 @@
 (global-set-key (kbd "C-.") 'other-window)
 (global-set-key (kbd "C-,") 'prev-window)
 
+;; Key bindings for Magit
+(with-eval-after-load "magit"
+  (global-set-key (kbd "C-x g") 'magit-status)
+  (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup))
+
 ;; -- MELPA --
 
 ;; Enable the MELPA package archive

@@ -5,4 +5,5 @@ This is my personal `.emacs.d` directory. I am using Emacs 25.1, build from sour
 
 ## Installed Packages
 
-- `zenburn-theme` - A low contrast color theme for Emacs.
+- `magit` - A Git porcelain inside Emacs
+- `zenburn-theme` - A low contrast color theme for Emacs

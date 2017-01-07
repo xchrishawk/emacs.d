@@ -18,3 +18,7 @@
 
 (require 'local-functions)
 (require 'local-setup)
+
+;; -- Third-Party Requires --
+
+(require 'magit)
