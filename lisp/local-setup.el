@@ -39,6 +39,19 @@
       kept-old-versions 2
       version-control t)
 
+;; -- CC-Mode Customization --
+
+;; Basic formatting for C mode and derivatives
+(setq c-default-style "bsd")
+(setq c-basic-offset 2)
+
+(defun customize-cc-mode ()
+  "Custom hook for `c-mode' and derivatives."
+  (local-set-key (kbd "C-c o") 'ff-find-other-file))
+
+(add-hook 'c-mode-hook 'customize-cc-mode)
+(add-hook 'c++-mode-hook 'customize-cc-mode)
+
 ;; -- Customization File --
 
 (setq custom-file "~/.emacs.d/custom.el")

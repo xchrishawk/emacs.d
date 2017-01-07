@@ -21,4 +21,4 @@
 
 ;; -- Third-Party Requires --
 
-(require 'magit)
+(require 'magit nil 'noerror)
