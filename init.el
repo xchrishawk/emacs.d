@@ -5,9 +5,8 @@
 
 ;; -- Load Paths --
 
-(let ((local-load-paths (list "~/.emacs.d/lisp")))
-  (dolist (path local-load-paths)
-    (add-to-list 'load-path path)))
+(add-to-list 'load-path "/usr/share/emacs/site-lisp")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;; -- Package Manager --
 
