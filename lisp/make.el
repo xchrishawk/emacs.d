@@ -30,7 +30,8 @@ invoked, in addition to the target name.")
 not `nil', it will be appended to the command."
   (interactive
    (progn
-     (or make-build-dir (user-error "make-build-dir is not set!"))
+     (or (stringp make-build-dir) (user-error "make-build-dir is not set!"))
+     (or (file-exists-p make-build-dir) (user-error (concat "make-build-dir (" make-build-dir ") does not exist!")))
      (list (read-string "Target: " nil 'make--history))))
   (let ((default-directory make-build-dir)
         (command (mapconcat 'identity (list "make" target make-build-additional-args) " ")))
