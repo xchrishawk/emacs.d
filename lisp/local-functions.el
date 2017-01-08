@@ -50,6 +50,13 @@
     (push-mark)
     (insert-char char chars-required)))
 
+(defun insert-banner-comment ()
+  "Inserts a C++-formatted banner comment."
+  (interactive)
+  (insert "/* -- ")
+  (save-excursion
+    (insert " -- */")))
+
 (defun insert-header-comment ()
   "Inserts a mode-appropriate header comment at the beginning of the buffer,
 unless the buffer already begins with a header comment."

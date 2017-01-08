@@ -23,5 +23,6 @@
 
 (require 'cmake-mode nil 'noerror)
 (require 'company nil 'noerror)
+(require 'flycheck nil 'noerror)
 (require 'magit nil 'noerror)
 (require 'irony nil 'noerror)

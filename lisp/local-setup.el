@@ -47,6 +47,7 @@
 
 (defun customize-cc-mode ()
   "Custom hook for `c-mode' and derivatives."
+  (local-set-key (kbd "C-c b") 'insert-banner-comment)
   (local-set-key (kbd "C-c o") 'ff-find-other-file))
 
 (add-hook 'c-mode-hook 'customize-cc-mode)
@@ -78,6 +79,17 @@
 
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'erase-buffer 'disabled nil)
+
+;; -- Flycheck Mode --
+
+(defun customize-flycheck-mode ()
+  "Custom hook for `flycheck-mode'."
+  (flycheck-irony-setup))
+
+(with-eval-after-load "flycheck"
+  (add-hook 'flycheck-mode-hook 'customize-flycheck-mode)
+  (add-hook 'c-mode-hook 'flycheck-mode)
+  (add-hook 'c++-mode-hook 'flycheck-mode))
 
 ;; -- Formatting --
 
