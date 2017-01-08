@@ -10,5 +10,6 @@ bookmarks
 custom.el
 elpa/
 ido.last
+irony/
 session.*
 url/

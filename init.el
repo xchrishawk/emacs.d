@@ -21,4 +21,7 @@
 
 ;; -- Third-Party Requires --
 
+(require 'cmake-mode nil 'noerror)
+(require 'company nil 'noerror)
 (require 'magit nil 'noerror)
+(require 'irony nil 'noerror)

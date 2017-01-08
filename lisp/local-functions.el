@@ -163,14 +163,15 @@ as well."
   "Builds a template project using TEMPLATE-NAME. Project name is set to
 PROJECT-NAME, and project is placed in PROJECT-DIR."
   (interactive "sTemplate name: \nsProject name: \nGProject directory: ")
-  (let* ((template-dir (concat (file-name-as-directory (expand-file-name "~/Templates")) template-name)))
+  (let* ((template-dir (concat (file-name-as-directory (expand-file-name "~/Templates")) template-name))
+         (project-dir (file-name-as-directory (expand-file-name project-dir))))
     ;; Recursively copy entire directory structure
     (copy-directory template-dir project-dir nil nil t)
     ;; Fix up directory names
     (run-on-directories
      project-dir
      (lambda (dir)
-       (when (string-match "\\(.+\\)\$\{TEMPLATE\}\\(/\\)?" dir)
+       (when (string-match "\\(.+\\)\$\{TEMPLATE_PROJECT_NAME\}\\(/\\)?" dir)
 	 (rename-file dir (concat (file-name-as-directory (match-string 1 dir)) project-name))))
      t)
     ;; Fix up file contents
@@ -180,15 +181,18 @@ PROJECT-NAME, and project is placed in PROJECT-DIR."
        (when (not (string-match "/\\.git/" file))
 	 (with-temp-file file
 	   (insert-file-contents file)
-	   (goto-char (point-min))
-	   (while (re-search-forward "\$\{TEMPLATE_PROJECT_NAME\}" nil t)
-	     (replace-match project-name t))
-           (goto-char (point-min))
-           (while (re-search-forward "\$\{TEMPLATE_PROJECT_DIR\}" nil t)
-             (replace-match (expand-file-name project-dir) t)))))
+           (dolist (item (list (cons "\$\{TEMPLATE_PROJECT_NAME\}" project-name)
+                               (cons "\$\{TEMPLATE_PROJECT_DIR\}" project-dir)))
+             (let ((pattern (car item))
+                   (replacement (cdr item)))
+               (goto-char (point-min))
+               (while (re-search-forward pattern nil t)
+                 (replace-match replacement t)))))))
      t)
-    ;; Switch to project directory
-    (cd project-dir)))
+    ;; Run initialization script, if one exists
+    (let ((init-script (concat project-dir "init.sh")))
+      (when (file-exists-p init-script)
+        (compile init-script)))))
 
 ;; -- Window Management --
 

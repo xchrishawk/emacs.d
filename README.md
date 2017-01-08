@@ -5,5 +5,11 @@ This is my personal `.emacs.d` directory. I am using Emacs 25.1, build from sour
 
 ## Installed Packages
 
+- `company` - Modular text completion framework
+- `company-c-headers` - `company-mode` backend for C/C++ header files
+- `company-irony` - `company-mode` completion back-end for `irony-mode`
+- `company-irony-c-headers` - `company-mode` backend for C/C++ header files with `irony-mode`
+- `irony` - C/C++ minor mode powered by libclang
+- `irony-eldoc` - `irony-mode` support for `eldoc-mode`
 - `magit` - A Git porcelain inside Emacs
 - `zenburn-theme` - A low contrast color theme for Emacs
