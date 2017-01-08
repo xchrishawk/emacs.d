@@ -18,6 +18,7 @@
 
 (require 'local-functions)
 (require 'local-setup)
+(require 'make)
 
 ;; -- Third-Party Requires --
 
