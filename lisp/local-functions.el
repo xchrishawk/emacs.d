@@ -192,7 +192,8 @@ PROJECT-NAME, and project is placed in PROJECT-DIR."
     ;; Run initialization script, if one exists
     (let ((init-script (concat project-dir "init.sh")))
       (when (file-exists-p init-script)
-        (compile init-script)))))
+        (let ((default-directory project-dir))
+          (compile init-script))))))
 
 ;; -- Window Management --
 
