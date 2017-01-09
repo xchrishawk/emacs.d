@@ -166,12 +166,19 @@ as well."
 
 ;; -- Templates --
 
-(defun template-project (template-name project-name project-dir)
-  "Builds a template project using TEMPLATE-NAME. Project name is set to
-PROJECT-NAME, and project is placed in PROJECT-DIR."
-  (interactive "sTemplate name: \nsProject name: \nGProject directory: ")
-  (let* ((template-dir (concat (file-name-as-directory (expand-file-name "~/Templates")) template-name))
+(defun template-project (template-dir project-dir project-name)
+  "Builds a template project from `TEMPLATE-DIR'. Project name is set to
+`PROJECT-NAME', and project is placed in `PROJECT-DIR'."
+  (interactive
+   (let* ((template-dir (read-directory-name "Template directory: " "~/Templates" nil t))
+          (project-dir (read-directory-name "Project directory: " "~/Developer"))
+          (project-name (read-string "Project name: " (file-name-nondirectory project-dir))))
+     (list template-dir project-dir project-name)))
+  (let* ((template-dir (file-name-as-directory (expand-file-name template-dir)))
          (project-dir (file-name-as-directory (expand-file-name project-dir))))
+    ;; Confirm
+    (or (yes-or-no-p (concat "Copy template " template-dir " to " project-dir "? "))
+        (user-error "Cancelled."))
     ;; Recursively copy entire directory structure
     (copy-directory template-dir project-dir nil nil t)
     ;; Fix up directory names
