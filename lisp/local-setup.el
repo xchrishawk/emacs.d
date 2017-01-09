@@ -21,7 +21,7 @@
 (toggle-scroll-bar -1)
 
 ;; Set frame to slightly transparent, and default to maximized
-(add-to-list 'default-frame-alist '(alpha . (95 . 70)))
+(add-to-list 'default-frame-alist '(alpha . (98 . 85)))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Load the zenburn theme
