@@ -168,5 +168,7 @@
 ;; -- MacOS-Specific Setup --
 
 ;; Swap default command and option keybindings so my pinkie doesn't fall off
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier 'super)
+(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier 'super)
+  (setq ring-bell-function 'ignore))
