@@ -160,6 +160,11 @@
 
 (add-hook 'org-mode-hook 'customize-org-mode)
 
+;; -- Python --
+
+;; Use Python 3 interpreter
+(setq python-shell-interpreter "python3")
+
 ;; -- User Info --
 
 (setq user-full-name "Chris Vig")
