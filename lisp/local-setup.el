@@ -165,6 +165,14 @@
 ;; Use Python 3 interpreter
 (setq python-shell-interpreter "python3")
 
+;; -- Racket --
+
+(defun customize-racket-mode ()
+  "Custom hook for `racket-mode'."
+  (local-set-key (kbd "C-c l") 'insert-lambda))
+
+(add-hook 'racket-mode-hook 'customize-racket-mode)
+
 ;; -- User Info --
 
 (setq user-full-name "Chris Vig")

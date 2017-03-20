@@ -87,6 +87,10 @@ unless the buffer already begins with a header comment."
       (insert comment)
       (goto-char (length comment)))))
 
+(defun insert-lambda ()
+  "Inserts a lambda character at point."
+  (interactive)
+  (insert "\u03BB"))
 
 (defun unindent-buffer ()
   "Removes any leading whitespace before all lines in this buffer."
