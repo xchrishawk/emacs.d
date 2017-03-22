@@ -180,8 +180,11 @@
 
 ;; -- MacOS-Specific Setup --
 
-;; Swap default command and option keybindings so my pinkie doesn't fall off
 (when (eq system-type 'darwin)
+  ;; Swap default command and option keybindings so my pinkie doesn't fall off
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'super)
-  (setq ring-bell-function 'ignore))
+  (setq ring-bell-function 'ignore)
+  ;; Add additional paths
+  (setq exec-path (append exec-path '("~/Programs/arcanist/bin"
+                                      "/Applications/Racket v6.8/bin"))))
