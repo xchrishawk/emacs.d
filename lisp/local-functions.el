@@ -62,30 +62,31 @@
 unless the buffer already begins with a header comment."
   (interactive)
   (barf-if-buffer-read-only)
-  (let ((comment nil))
-    (cond
-     ((eq major-mode 'emacs-lisp-mode)
-      (setq comment (format ";;\n;; %s\n;; %s (%s)\n;;\n\n"
-			    (file-name-nondirectory (buffer-file-name (current-buffer)))
-			    (user-full-name)
-			    user-mail-address)))
-     ((eq major-mode 'java-mode)
-      (setq comment (format "/**\n * %s\n * @author %s (%s)\n */\n\n"
-			    (file-name-nondirectory (buffer-file-name (current-buffer)))
-			    (user-full-name)
-			    user-mail-address)))
-     ((or (eq major-mode 'c-mode)
-	  (eq major-mode 'c++-mode))
-      (setq comment (format "/**\n * @file	%s\n * @author	%s (%s)\n * @date	%s\n */\n\n"
-			    (file-name-nondirectory (buffer-file-name (current-buffer)))
-			    (user-full-name)
-			    user-mail-address
-			    (format-time-string "%Y/%m/%d")))))
-    (or comment (error "No format defined for this mode"))
-    (unless (string-prefix-p comment (buffer-string))
-      (goto-char (point-min))
-      (insert comment)
-      (goto-char (length comment)))))
+  (save-excursion
+    (let ((comment nil))
+      (cond
+       ((or (eq major-mode 'emacs-lisp-mode)
+            (eq major-mode 'racket-mode))
+        (setq comment (format ";;\n;; %s\n;; %s (%s)\n;;\n\n"
+                              (file-name-nondirectory (buffer-file-name (current-buffer)))
+                              (user-full-name)
+                              user-mail-address)))
+       ((eq major-mode 'java-mode)
+        (setq comment (format "/**\n * %s\n * @author %s (%s)\n */\n\n"
+                              (file-name-nondirectory (buffer-file-name (current-buffer)))
+                              (user-full-name)
+                              user-mail-address)))
+       ((or (eq major-mode 'c-mode)
+            (eq major-mode 'c++-mode))
+        (setq comment (format "/**\n * @file	%s\n * @author	%s (%s)\n * @date	%s\n */\n\n"
+                              (file-name-nondirectory (buffer-file-name (current-buffer)))
+                              (user-full-name)
+                              user-mail-address
+                              (format-time-string "%Y/%m/%d")))))
+      (or comment (error "No format defined for this mode"))
+      (unless (string-prefix-p comment (buffer-string))
+        (goto-char (point-min))
+        (insert comment)))))
 
 (defun insert-lambda ()
   "Inserts a lambda character at point."
