@@ -1,6 +1,6 @@
 # .emacs.d
 
-This is my personal `.emacs.d` directory. I am using Emacs 25.1, build from source on Linux Mint
+This is my personal `.emacs.d` directory. I am using Emacs 25.2, build from source on Linux Mint
 18.1 Serena.
 
 ## Installed Packages
@@ -14,4 +14,5 @@ This is my personal `.emacs.d` directory. I am using Emacs 25.1, build from sour
 - `irony` - C/C++ minor mode powered by libclang
 - `irony-eldoc` - `irony-mode` support for `eldoc-mode`
 - `magit` - A Git porcelain inside Emacs
+- `racket-mode` - Major mode for Racket language
 - `zenburn-theme` - A low contrast color theme for Emacs
