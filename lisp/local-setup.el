@@ -80,6 +80,11 @@
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'erase-buffer 'disabled nil)
 
+;; -- ERC --
+
+(setq erc-nick "xchrishawk")
+(setq erc-user-full-name "Chris Vig")
+
 ;; -- Flycheck Mode --
 
 (defun customize-flycheck-mode ()
@@ -172,6 +177,9 @@
   (local-set-key (kbd "C-c l") 'insert-lambda))
 
 (add-hook 'racket-mode-hook 'customize-racket-mode)
+
+; Custom indentations
+(put 'place 'racket-indent-function 1)
 
 ;; -- User Info --
 
