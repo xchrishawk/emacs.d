@@ -177,6 +177,7 @@
   (local-set-key (kbd "C-c l") 'insert-lambda))
 
 (add-hook 'racket-mode-hook 'customize-racket-mode)
+(add-hook 'racket-repl-mode-hook 'customize-racket-mode)
 
 ; Custom indentations
 (put 'place 'racket-indent-function 1)
