@@ -180,6 +180,7 @@
 (add-hook 'racket-repl-mode-hook 'customize-racket-mode)
 
 ; Custom indentations
+(put 'ifmap 'racket-indent-function 1)
 (put 'place 'racket-indent-function 1)
 
 ;; -- User Info --
