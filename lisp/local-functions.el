@@ -155,6 +155,7 @@ as well."
 (defun initialize ()
   "Resets the frame to its initial layout."
   (interactive)
+  (cd "~")
   (delete-other-windows)
   (switch-to-buffer (buffer-special-name "scratch"))
   (split-window-horizontally)

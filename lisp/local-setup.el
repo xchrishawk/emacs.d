@@ -191,6 +191,8 @@
 ;; -- MacOS-Specific Setup --
 
 (when (eq system-type 'darwin)
+  ;; Set font
+  (set-frame-font "SF Mono-15")
   ;; Swap default command and option keybindings so my pinkie doesn't fall off
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'super)
