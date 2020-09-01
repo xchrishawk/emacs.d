@@ -106,8 +106,9 @@
 
 ;; -- Global Hooks --
 
-;; Run `initialize' on startup
+;; Run `initialize' and `server-start' on startup
 (add-hook 'after-init-hook 'initialize)
+(add-hook 'after-init-hook 'server-start)
 
 ;; Delete trailing whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -187,6 +188,11 @@
 
 (setq user-full-name "Chris Vig")
 (setq user-mail-address "chris@invictus.so")
+
+;; -- Environment Variables --
+
+;; Set $GIT_EDITOR to open Git buffers in Emacs, falling back to nano if needed
+(setenv "GIT_EDITOR" "emacsclient -a 'nano'")
 
 ;; -- MacOS-Specific Setup --
 
