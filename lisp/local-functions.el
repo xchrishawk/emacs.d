@@ -35,10 +35,13 @@
   (interactive)
   (let* ((terminal-name "terminal")
 	 (terminal-buffer-name (buffer-special-name terminal-name))
-	 (bash-path "/bin/bash"))
+         (shell-path
+          (if (eq system-type 'darwin)
+              "/bin/zsh"
+            "/bin/bash")))
     (if (buffer-exists terminal-buffer-name)
 	(switch-to-buffer terminal-buffer-name)
-      (ansi-term bash-path terminal-name))))
+      (ansi-term shell-path terminal-name))))
 
 ;; -- Editing --
 
