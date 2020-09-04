@@ -14,6 +14,17 @@
   (interactive "nFont size: ")
   (set-face-attribute 'default nil :height (* size 10)))
 
+(defun set-selected-frame-size (&optional width height)
+  "Sets the active frame size to the specified width and height (in columns and
+rows, respectively. If `width' and `height' are not specified, they default to
+80 and 24, respectively."
+  (interactive)
+  (when (window-system)
+    (set-frame-size
+     (selected-frame)
+     (or width 80)
+     (or height 24))))
+
 ;; -- Buffers --
 
 (defun buffer-exists (name)
