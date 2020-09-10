@@ -24,6 +24,9 @@
 (add-to-list 'default-frame-alist '(alpha . (98 . 85)))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+;; Enable current line highlighting
+(global-hl-line-mode nil)
+
 ;; Load the zenburn theme
 (with-eval-after-load "package"
   (load-theme 'zenburn t))
