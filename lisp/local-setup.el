@@ -195,6 +195,12 @@
 (put 'ifmap 'racket-indent-function 1)
 (put 'place 'racket-indent-function 1)
 
+;; -- SGML Mode --
+
+;; Use 4-character indent for HTML, but guess the indent when opening a file
+(setq sgml-basic-offset 4)
+(add-hook 'sgml-mode-hook 'sgml-guess-indent)
+
 ;; -- User Info --
 
 (setq user-full-name "Chris Vig")
