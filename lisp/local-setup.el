@@ -78,6 +78,13 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 
+;; -- Display Time Mode --
+
+;; Show a clock in the mode bar
+(setq display-time-interval 5)
+(setq display-time-24hr-format t)
+(display-time-mode 1)
+
 ;; -- Enable Functions --
 
 (put 'dired-find-alternate-file 'disabled nil)
