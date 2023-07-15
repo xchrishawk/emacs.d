@@ -235,3 +235,15 @@ as well."
   "Opposite of `other-window'."
   (interactive "p")
   (other-window (- count)))
+
+;; -- Miscellaneous --
+
+(defun set-exec-path-from-shell-path ()
+  "Set up Emacs' `exec-path' and PATH environment variable to match that used by the shell."
+  (interactive)
+  (let ((path-from-shell (replace-regexp-in-string
+                          "[ \t\n]*$" "" (shell-command-to-string
+                                          "$SHELL --login -c 'echo $PATH'"
+                                          ))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))

@@ -215,11 +215,10 @@
 
 (when (eq system-type 'darwin)
   ;; Set font
-  (set-frame-font "SF Mono-15")
+  (set-frame-font "Menlo-15")
   ;; Swap default command and option keybindings so my pinkie doesn't fall off
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'super)
   (setq ring-bell-function 'ignore)
-  ;; Add additional paths
-  (setq exec-path (append exec-path '("~/Programs/arcanist/bin"
-                                      "/Applications/Racket v6.8/bin"))))
+  ;; Set path
+  (set-exec-path-from-shell-path))
