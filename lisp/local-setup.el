@@ -159,6 +159,9 @@
   (global-set-key (kbd "C-x g") 'magit-status)
   (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup))
 
+;; Additional keyboard commands
+(global-set-key (kbd "C-c C-c") 'compile)
+
 ;; -- MELPA --
 
 ;; Enable the MELPA package archive
