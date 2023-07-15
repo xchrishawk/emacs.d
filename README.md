@@ -15,4 +15,5 @@ This is my personal `.emacs.d` directory. I am using Emacs 25.2, build from sour
 - `irony-eldoc` - `irony-mode` support for `eldoc-mode`
 - `magit` - A Git porcelain inside Emacs
 - `racket-mode` - Major mode for Racket language
+- `rust-mode` - Major mode for Rust language
 - `zenburn-theme` - A low contrast color theme for Emacs
