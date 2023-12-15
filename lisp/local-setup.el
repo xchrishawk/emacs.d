@@ -218,7 +218,8 @@
 
 (when (eq system-type 'darwin)
   ;; Set font
-  (set-frame-font "Menlo-15")
+  (set-frame-font
+   (if (string= (system-name) "starfighter") "Menlo-13" "Menlo-15"))
   ;; Swap default command and option keybindings so my pinkie doesn't fall off
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'super)
