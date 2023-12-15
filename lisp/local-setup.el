@@ -85,6 +85,12 @@
 (setq display-time-24hr-format t)
 (display-time-mode 1)
 
+;; -- Elpy --
+
+;; Enable Elpy
+(with-eval-after-load "elpy"
+  (elpy-enable))
+
 ;; -- Enable Functions --
 
 (put 'dired-find-alternate-file 'disabled nil)
@@ -183,7 +189,8 @@
 ;; -- Python --
 
 ;; Use Python 3 interpreter
-(setq python-shell-interpreter "python3")
+(with-eval-after-load "elpy"
+  (setq python-shell-interpreter "python3"))
 
 ;; -- Racket --
 
@@ -218,13 +225,19 @@
 
 (when (eq system-type 'darwin)
   ;; Set font
-  (set-frame-font
-   (if (string= (system-name) "starfighter") "Menlo-13" "Menlo-15"))
+  (set-frame-font "Menlo-15")
   ;; Swap default command and option keybindings so my pinkie doesn't fall off
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'super)
   (setq ring-bell-function 'ignore)
   ;; Disable annoying warning for Python
-  (setq python-shell-completion-native-enable nil)
-  ;; Set path
-  (set-exec-path-from-shell-path))
+  (setq python-shell-completion-native-enable nil))
+
+;; -- Computer-Specific Setup --
+
+;; Starfighter (Chris's personal Macbook)
+(when (string= (system-name) "starfighter")
+  ;; Use a smaller font size
+  (set-frame-font "Menlo-13")
+  ;; Add python bin to path
+  (add-to-path "/Users/chris/Library/Python/3.9/bin"))

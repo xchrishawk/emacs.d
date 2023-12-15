@@ -184,6 +184,13 @@ as well."
     (mapc 'kill-buffer (buffer-list))
     (initialize)))
 
+;; -- Path Management --
+
+(defun add-to-path (path)
+  "Adds the specified string to the PATH and exec-path."
+  (setq exec-path (append exec-path '(path)))
+  (setenv "PATH" (concat (getenv "PATH") ":" path)))
+
 ;; -- Templates --
 
 (defun template-project (template-dir project-dir project-name)
@@ -235,15 +242,3 @@ as well."
   "Opposite of `other-window'."
   (interactive "p")
   (other-window (- count)))
-
-;; -- Miscellaneous --
-
-(defun set-exec-path-from-shell-path ()
-  "Set up Emacs' `exec-path' and PATH environment variable to match that used by the shell."
-  (interactive)
-  (let ((path-from-shell (replace-regexp-in-string
-                          "[ \t\n]*$" "" (shell-command-to-string
-                                          "$SHELL --login -c 'echo $PATH'"
-                                          ))))
-    (setenv "PATH" path-from-shell)
-    (setq exec-path (split-string path-from-shell path-separator))))
