@@ -224,5 +224,7 @@
   (setq mac-command-modifier 'meta)
   (setq mac-option-modifier 'super)
   (setq ring-bell-function 'ignore)
+  ;; Disable annoying warning for Python
+  (setq python-shell-completion-native-enable nil)
   ;; Set path
   (set-exec-path-from-shell-path))
