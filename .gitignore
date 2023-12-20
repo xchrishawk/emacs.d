@@ -13,4 +13,5 @@ elpy/
 ido.last
 irony/
 session.*
+tramp
 url/
