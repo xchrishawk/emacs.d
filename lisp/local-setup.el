@@ -221,6 +221,11 @@
 ;; Set $GIT_EDITOR to open Git buffers in Emacs, falling back to nano if needed
 (setenv "GIT_EDITOR" "emacsclient -a 'nano'")
 
+;; -- Miscellaneous --
+
+;; Don't prompt for confirmation when quitting with running processes
+(setq confirm-kill-processes nil)
+
 ;; -- MacOS-Specific Setup --
 
 (when (eq system-type 'darwin)
