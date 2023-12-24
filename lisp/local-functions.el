@@ -184,12 +184,69 @@ as well."
     (mapc 'kill-buffer (buffer-list))
     (initialize)))
 
+;; -- Minor Modes --
+
+(define-minor-mode greek-input
+  "Toggle Greek input mode."
+  :init-value nil
+  :lighter " Greek"
+  :keymap '(((kbd "C-c g a") . "α")
+            ((kbd "C-c g b") . "β")
+            ((kbd "C-c g g") . "γ")
+            ((kbd "C-c g d") . "δ")
+            ((kbd "C-c g e") . "ε")
+            ((kbd "C-c g z") . "ζ")
+            ((kbd "C-c g h") . "η")
+            ((kbd "C-c g q") . "θ")
+            ((kbd "C-c g i") . "ι")
+            ((kbd "C-c g k") . "κ")
+            ((kbd "C-c g l") . "λ")
+            ((kbd "C-c g m") . "μ")
+            ((kbd "C-c g n") . "ν")
+            ((kbd "C-c g x") . "ξ")
+            ((kbd "C-c g o") . "ο")
+            ((kbd "C-c g p") . "π")
+            ((kbd "C-c g r") . "ρ")
+            ((kbd "C-c g s") . "σ")
+            ((kbd "C-c g t") . "τ")
+            ((kbd "C-c g u") . "υ")
+            ((kbd "C-c g f") . "ϕ")
+            ((kbd "C-c g j") . "φ")
+            ((kbd "C-c g c") . "χ")
+            ((kbd "C-c g y") . "ψ")
+            ((kbd "C-c g w") . "ω")
+            ((kbd "C-c g A") . "Α")
+            ((kbd "C-c g B") . "Β")
+            ((kbd "C-c g G") . "Γ")
+            ((kbd "C-c g D") . "Δ")
+            ((kbd "C-c g E") . "Ε")
+            ((kbd "C-c g Z") . "Ζ")
+            ((kbd "C-c g H") . "Η")
+            ((kbd "C-c g Q") . "Θ")
+            ((kbd "C-c g I") . "Ι")
+            ((kbd "C-c g K") . "Κ")
+            ((kbd "C-c g L") . "Λ")
+            ((kbd "C-c g M") . "Μ")
+            ((kbd "C-c g N") . "Ν")
+            ((kbd "C-c g X") . "Ξ")
+            ((kbd "C-c g O") . "Ο")
+            ((kbd "C-c g P") . "Π")
+            ((kbd "C-c g R") . "Ρ")
+            ((kbd "C-c g S") . "Σ")
+            ((kbd "C-c g T") . "Τ")
+            ((kbd "C-c g U") . "Υ")
+            ((kbd "C-c g F") . "Φ")
+            ((kbd "C-c g J") . "Φ")
+            ((kbd "C-c g C") . "Χ")
+            ((kbd "C-c g Y") . "Ψ")
+            ((kbd "C-c g W") . "Ω")))
+
 ;; -- Path Management --
 
 (defun add-to-path (path)
   "Adds the specified string to the PATH and exec-path."
-  (setq exec-path (append exec-path '(path)))
-  (setenv "PATH" (concat (getenv "PATH") ":" path)))
+  (push path exec-path)
+  (setenv "PATH" (concat path ":" (getenv "PATH"))))
 
 ;; -- Templates --
 
